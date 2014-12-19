@@ -20,7 +20,7 @@ while getopts "pP:n:" opt; do
     P) PLOT_IT="true"
        PLOT_FILE="$OPTARG"
        ;;
-    n) DATA_FILE="$OPTARG"
+    n) DATA_FILE="/tmp/$OPTARG"
        ;;
     *) usage
        ;;
@@ -37,7 +37,7 @@ fi
 # If $DATA_FILE is not set by getopts, set a default.
 if [ -z "$DATA_FILE" ]
 then
-  DATA_FILE=/tmp/disk_test_both.$$
+  DATA_FILE="/tmp/disk_test_both.$$"
 fi
 
 # Plot results on a graph.
@@ -140,13 +140,13 @@ function time_tests {
   rm -r  [0-9]*
 
   # Results.
-  echo "$COUNT,$FLAT,$HIER" | tee -a $DATA_FILE
+  echo "$COUNT,$FLAT,$HIER" | tee -a "$DATA_FILE"
 }
 
 mkdir disk_test || die "Failed to create dir disk_test!"
 cd disk_test || die "Failed to cd to disk_test!"
 
-echo "number_of_files,flat,hierarchical" | tee $DATA_FILE
+echo "number_of_files,flat,hierarchical" | tee "$DATA_FILE"
 
 time_tests 1000
 time_tests 2000
