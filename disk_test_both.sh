@@ -9,7 +9,7 @@ function usage {
   echo "	If neither -p nor -P is specified, the test will just run."
   echo "	-p will run the test, save output to file, and plot the current run with gnuplot."
   echo "	-P <INPUT_FILE> will not run test, but will plot the specified INPUT_FILE."
-  echo "	-n <OUTPUT_FILE> will save output into a file named <OUTPUT_FILE> in the current directory."
+  echo "	-n <OUTPUT_FILE> will save output into a file named <OUTPUT_FILE> in /tmp."
   exit 1
 }
 
